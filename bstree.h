@@ -178,7 +178,7 @@ public:
         {
             curr = curr->left;
         }
-        return current;
+        return curr;
     }
 
     Iterator<T> end()
