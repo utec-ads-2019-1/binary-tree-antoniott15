@@ -10,7 +10,7 @@ private:
     Node<T> *current;
 
 public:
-    /*  Iterator()
+    Iterator()
     {
         // TODO
     }
@@ -30,7 +30,7 @@ public:
         // TODO
     }
 
-     Iterator<T> operator++(Iterator *nodo)
+    Iterator<T> operator++(Iterator<T> *nodo)
     {
         if (nodo->left)
         {
@@ -54,7 +54,7 @@ public:
     T operator*()
     {
         // TODO
-    }*/
+    }
 };
 
 #endif

@@ -46,10 +46,10 @@ public:
         else
         {
             Node<T> *temp = root;
-            while (!(temp->value == value))
+            while (!(temp->data == value))
             {
 
-                if (value < temp->value)
+                if (value < temp->data)
                 {
                     if (temp->left == nullptr)
                     {
@@ -61,7 +61,7 @@ public:
                     }
                 }
 
-                else if (value > temp->value)
+                else if (value > temp->data)
                 {
                     if (temp->right == nullptr)
                     {
