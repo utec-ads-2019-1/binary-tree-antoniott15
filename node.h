@@ -2,23 +2,24 @@
 #define NODE_H
 
 template <typename T>
-class BSTree; 
+class BSTree;
 
 template <typename T>
-class Iterator; 
+class Iterator;
 
 template <typename T>
-class Node {
-    private:
-        T data;
-        Node<T> *left;
-        Node<T> *right;
+class Node
+{
+private:
+    T data;
+    Node<T> *left;
+    Node<T> *right;
 
-    template<class>
-    friend class BSTree; 
+    template <class>
+    friend class BSTree;
 
-    template<class>
-    friend class Iterator; 
+    template <class>
+    friend class Iterator;
 };
 
 #endif
