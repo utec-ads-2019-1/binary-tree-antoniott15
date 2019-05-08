@@ -10,7 +10,7 @@ class BSTree
 {
 private:
     Node<T> *root;
-    int counter;
+    unsigned int counter = 0;
 
 public:
     BSTree() : root(nullptr){};
@@ -42,6 +42,7 @@ public:
         if (!root)
         {
             root = newData;
+            counter++;
             return true;
         }
         else
@@ -55,6 +56,7 @@ public:
                     if (temp->left == nullptr)
                     {
                         temp->left = newData;
+                        counter++;
                         return true;
                     }
                     else
@@ -68,6 +70,7 @@ public:
                     if (temp->right == nullptr)
                     {
                         temp->right = newData;
+                        counter++;
                         return true;
                     }
                     else
@@ -76,23 +79,78 @@ public:
                     }
                 }
             }
-
             return false;
         }
     }
-    /*
-  bool remove(T data)
+
+    Node<T> *FindMin(T node)
     {
+        Node<T> *current = node;
 
-
+        while (current->left != nullptr)
+        {
+            current = current->left;
+        }
+        return (current->data);
     }
-*/
+    /*
+    bool remove(T data)
+    {
+        Node<T> *newData = new Node<T>(data);
+        if (root == nullptr)
+            return false;
+
+        else
+        {
+            if (data < root->data)
+            {
+                root->left = delete root->left;
+            }
+            else if (data > root->data)
+            {
+                root->right = delete root->right;
+            }
+            else
+            {
+                if (root->left == nullptr && root->right == nullptr)
+                {
+                    delete root;
+                    counter--;
+                    root = nullptr;
+                    return true;
+                }
+                else if (root->left == nullptr)
+                {
+                    Node<T> *temp = root;
+                    root = root->right;
+                    counter--;
+                    delete temp;
+                    return true;
+                }
+                else if (root->right == nullptr)
+                {
+                    Node<T> *temp = root;
+                    root = root->left;
+                    counter--;
+                    delete temp;
+                    return true;
+                }
+                else
+                {
+                    Node<T> *temp = FindMin(root->right);
+                    root->data = temp->data;
+                    root->right = delete temp->data;
+                }
+            }
+            return root;
+        }
+    }*/
     unsigned int size()
     {
-        cout << counter;
+        //cout << counter << " ";
         return counter;
     }
-    /*
+
     void printPreorder(Node<T> *nodo)
     {
         cout << nodo->data << " ";
@@ -169,32 +227,21 @@ public:
         }
         else
         {
-            cout << endl
-                 << "Postorder: ";
+
             printPostorder(root);
         }
     }
 
     Iterator<T> begin()
     {
-        Node<T> *curr = root;
-        while (curr->left)
-        {
-            curr = curr->left;
-        }
-        return curr;
+        return Iterator<T>(root);
     }
 
     Iterator<T> end()
     {
-        Node<T> *curr = root;
-        while (curr->right)
-        {
-            curr = curr->right;
-        }
-        return curr;
+        return Iterator<T>(root);
     }
-
+    /*
     ~BSTree() {
             // TODO
          }*/

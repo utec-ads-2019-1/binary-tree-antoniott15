@@ -12,48 +12,42 @@ private:
 public:
     Iterator()
     {
-        // TODO
-    }
+        current = nullptr;
+    };
 
     Iterator(Node<T> *node)
     {
-        // TODO
+        current = node;
     }
 
     Iterator<T> operator=(Iterator<T> other)
     {
-        // TODO
+        if (current)
+        {
+            current = other.current;
+        }
+
+        return other;
     }
 
     bool operator!=(Iterator<T> other)
     {
-        // TODO
+        Iterator<T> current = new Iterator<T>;
+        return current != other.current;
     }
 
-    Iterator<T> operator++(Iterator<T> *nodo)
+    Iterator<T> *operator++()
     {
-        if (nodo->left)
-        {
-            return nodo->left;
-        }
-        else if (nodo->right)
-        {
-            return nodo->right;
-        }
-        else if (nodo->left == nullptr && nodo->right == nullptr)
-        {
-            return nullptr;
-        }
     }
-
+    /*
     Iterator<T> operator--()
     {
         // TODO
     }
-
+*/
     T operator*()
     {
-        // TODO
+        return current->data;
     }
 };
 
