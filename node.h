@@ -14,6 +14,12 @@ private:
     T data;
     Node<T> *left;
     Node<T> *right;
+    Node();
+    Node(int data_) : data(data_)
+    {
+        right = nullptr;
+        left = nullptr;
+    };
 
     template <class>
     friend class BSTree;

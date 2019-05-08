@@ -15,45 +15,47 @@ private:
 public:
     BSTree() : root(nullptr){};
 
-    bool find(T value)
+    bool find(T data)
     {
         Node<T> *temp = root;
-        if (!root)
+        if (root == nullptr)
+        {
             return false;
-
+        }
         while (temp)
         {
-            if (temp->data == value)
+            if (temp->data == data)
+            {
                 return true;
-            else if (temp->data > value)
+            }
+            else if (temp->data > data)
                 temp = temp->left;
             else
                 temp = temp->right;
         }
-        return false;
+        return true;
     }
 
-    bool insert(T value)
+    bool insert(T data)
     {
-        Node<T> *new_node = new Node<T>;
-        new_node->data = value;
-        if (find(value))
-            return false;
-        else if (!root)
+        Node<T> *newData = new Node<T>(data);
+        if (!root)
         {
-            root = new_node;
+            root = newData;
+            return true;
         }
         else
         {
             Node<T> *temp = root;
-            while (!(temp->data == value))
+            while (!(temp->data == data))
             {
 
-                if (value < temp->data)
+                if (data < temp->data)
                 {
                     if (temp->left == nullptr)
                     {
-                        temp->left = new_node;
+                        temp->left = newData;
+                        return true;
                     }
                     else
                     {
@@ -61,11 +63,12 @@ public:
                     }
                 }
 
-                else if (value > temp->data)
+                else if (data > temp->data)
                 {
                     if (temp->right == nullptr)
                     {
-                        temp->right = new_node;
+                        temp->right = newData;
+                        return true;
                     }
                     else
                     {
@@ -73,12 +76,12 @@ public:
                     }
                 }
             }
-        }
-        counter++;
-        return true;
-    }
 
-    /*  bool remove(T value)
+            return false;
+        }
+    }
+    /*
+  bool remove(T data)
     {
 
 
@@ -86,9 +89,10 @@ public:
 */
     unsigned int size()
     {
+        cout << counter;
         return counter;
     }
-
+    /*
     void printPreorder(Node<T> *nodo)
     {
         cout << nodo->data << " ";
@@ -191,7 +195,7 @@ public:
         return curr;
     }
 
-    /*~BSTree() {
+    ~BSTree() {
             // TODO
          }*/
 };
