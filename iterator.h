@@ -35,11 +35,11 @@ public:
         Iterator<T> current = new Iterator<T>;
         return current != other.current;
     }
-
+ /*
     Iterator<T> *operator++()
     {
     }
-    /*
+   
     Iterator<T> operator--()
     {
         // TODO

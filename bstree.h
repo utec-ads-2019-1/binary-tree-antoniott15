@@ -83,7 +83,7 @@ public:
         }
     }
 
-    Node<T> *FindMin(T node)
+    T FindMin(Node<T>* node)
     {
         Node<T> *current = node;
 
@@ -91,24 +91,24 @@ public:
         {
             current = current->left;
         }
-        return (current->data);
+        return current->data;
     }
-    /*
-    bool remove(T data)
+
+    Node<int>* remove(T data)
     {
         Node<T> *newData = new Node<T>(data);
         if (root == nullptr)
-            return false;
+            return root;
 
         else
         {
             if (data < root->data)
             {
-                root->left = delete root->left;
+                root->left;
             }
             else if (data > root->data)
             {
-                root->right = delete root->right;
+                root->right;
             }
             else
             {
@@ -117,7 +117,6 @@ public:
                     delete root;
                     counter--;
                     root = nullptr;
-                    return true;
                 }
                 else if (root->left == nullptr)
                 {
@@ -125,7 +124,6 @@ public:
                     root = root->right;
                     counter--;
                     delete temp;
-                    return true;
                 }
                 else if (root->right == nullptr)
                 {
@@ -133,18 +131,18 @@ public:
                     root = root->left;
                     counter--;
                     delete temp;
-                    return true;
                 }
                 else
                 {
-                    Node<T> *temp = FindMin(root->right);
-                    root->data = temp->data;
-                    root->right = delete temp->data;
+                    T temp = FindMin(root->right);
+                    root->data = temp;
+                    root->right = remove(temp);
                 }
             }
             return root;
         }
-    }*/
+    }
+
     unsigned int size()
     {
         //cout << counter << " ";
