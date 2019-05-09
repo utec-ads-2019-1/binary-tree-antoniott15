@@ -83,69 +83,67 @@ public:
         }
     }
 
-    T FindMin(Node<T>* node)
-    {
-        Node<T> *current = node;
-
-        while (current->left != nullptr)
-        {
-            current = current->left;
-        }
-        return current->data;
-    }
-
-    Node<int>* remove(T data)
+    bool remove(T data)
     {
         Node<T> *newData = new Node<T>(data);
-        if (root == nullptr)
-            return root;
-
+        Node<T> *temp = root;
+        if (!data)
+        {
+            return false;
+        }
         else
         {
-            if (data < root->data)
+            /*if (data < root->data)
             {
-                root->left;
+                counter--;
+                return root->left;
             }
             else if (data > root->data)
             {
-                root->right;
+                counter--;
+                return root->right;
+            }
+            else
+            {*/
+            if (root->left == nullptr && root->right == nullptr)
+            {
+
+                counter--;
+                delete root;
+                root = nullptr;
+            }
+            else if (root->left == nullptr)
+            {
+                counter--;
+                root = root->right;
+
+                delete root;
+            }
+            else if (root->right == nullptr)
+            {
+                counter--;
+                root = root->left;
+
+                delete root;
             }
             else
             {
-                if (root->left == nullptr && root->right == nullptr)
-                {
-                    delete root;
-                    counter--;
-                    root = nullptr;
-                }
-                else if (root->left == nullptr)
-                {
-                    Node<T> *temp = root;
-                    root = root->right;
-                    counter--;
-                    delete temp;
-                }
-                else if (root->right == nullptr)
-                {
-                    Node<T> *temp = root;
-                    root = root->left;
-                    counter--;
-                    delete temp;
-                }
-                else
-                {
-                    T temp = FindMin(root->right);
-                    root->data = temp;
-                    root->right = remove(temp);
-                }
+                counter--;
+                T tempo;
+                tempo = temp->data;
+                temp->data = temp->right->data;
+                temp->right->data = tempo;
+                temp = temp->right;
+                delete temp;
             }
-            return root;
+            // }
+            return true;
         }
     }
 
     unsigned int size()
     {
-        //cout << counter << " ";
+        cout << counter << endl;
         return counter;
     }
 

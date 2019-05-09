@@ -23,7 +23,7 @@ void Tester::testBSFTree(Mocker mocker, vector<T> elements)
 
     sortAndPrune(elements);
     ASSERT(elements.size() == test->size(), "There is a problem with the insert or size");
-    /*
+
     unsigned int toRemove = mocker.generateRandomInt(1, elements.size());
     for (int j = 0; j < toRemove; ++j)
     {
@@ -31,10 +31,10 @@ void Tester::testBSFTree(Mocker mocker, vector<T> elements)
         T temp = elements.at(index);
         elements.erase(elements.begin() + index);
         test->remove(temp);
-        ASSERT(test->find(temp), "There is a problem with the remove or find");
-    }*/
-    //ASSERT(elements.size() == test->size(), "There is a problem with the remove or size");
-
+        ASSERT(test->find(temp), "There is a problem with the remove ");
+    }
+    cout << "elements size: " << elements.size() << "  test size: " << test->size() << endl;
+    // ASSERT(elements.size() == test->size(), "There is a problem with the remove or size");
     auto it = test->begin();
     /* for (int j = 0; j < elements.size() && it != test->end(); ++j)
     {
