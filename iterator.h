@@ -47,6 +47,7 @@ public:
 */
     T operator*()
     {
+        // Falta el caso vacío
         return current->data;
     }
 };

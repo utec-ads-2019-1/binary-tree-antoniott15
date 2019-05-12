@@ -87,6 +87,8 @@ public:
     {
         Node<T> *newData = new Node<T>(data);
         Node<T> *temp = root;
+
+        // if !data?
         if (!data)
         {
             return false;
@@ -237,6 +239,8 @@ public:
     {
         return Iterator<T>(root);
     }
+
+    // No hay destructor
     /*
     ~BSTree() {
             // TODO
